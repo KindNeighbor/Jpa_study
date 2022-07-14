@@ -9,14 +9,13 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Team extends BaseEntity {
+public class Product {
 
     @Id @GeneratedValue
-    @Column(name = "TEAM_ID")
-    private Long id;
+    private long id;
+
     private String name;
 
-    @OneToMany(mappedBy = "team")
-    List<Member> members = new ArrayList<>();
-
+    @OneToMany(mappedBy = "product")
+    private List<MemberProduct> memberProducts = new ArrayList<>();
 }
