@@ -19,12 +19,12 @@ public class Main {
             member.setAge(10);
             em.persist(member);
 
-            TypedQuery<Member> query1 = em.createQuery("select m from Member m where m.id = 10", Member.class);
-            Member result = query1.getSingleResult();
-            System.out.println("result = " + result);
+            em.flush();
+            em.clear();
 
-//            TypedQuery<String> query2 = em.createQuery("select m.username from Member m", String.class);
-//            Query query3 = em.createQuery("select m.username, m.age from Member m");
+            List<Team> result = em.createQuery("select m.team from Member m", Team.class)
+                    .getResultList();
+
 
             tx.commit();
         } catch (Exception e) {
